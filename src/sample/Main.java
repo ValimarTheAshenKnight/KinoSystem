@@ -19,6 +19,8 @@ public class Main extends Application {
 
     private Stage MovieBildschirm;
 
+    private TextArea textDisplay;
+
     private Stage Hall;
 
     @Override
@@ -26,11 +28,14 @@ public class Main extends Application {
 
         BorderPane layout = new BorderPane();
 
+        this.textDisplay = new TextArea("Herzlich Willkommen in unserem Buchungssystem. \nDieses System wird täglich aktualisiert und soll so benutzerfreundlich wie möglich sein. \nViel spass bei den Filmen.");
+
         createMovieBildschirm(primaryStage, layout);
         createHall(primaryStage, layout);
-        layout.setCenter(buttons());
-        primaryStage.setTitle("Kinosystem");
-        primaryStage.setScene(new Scene(layout, 600, 475));
+        layout.setBottom(buttons());
+        layout.setCenter(this.textDisplay);
+        primaryStage.setTitle("Willkommen");
+        primaryStage.setScene(new Scene(layout, 480, 175));
         primaryStage.show();
     }
 
@@ -43,15 +48,15 @@ public class Main extends Application {
         Button Film = new Button("Movie");
 
         DontPushMe.setPadding(new Insets(10));
-        DontPushMe.setHgap(95);
+        DontPushMe.setHgap(20);
 
-        Admin.setPadding(new Insets(50));
-        Film.setPadding(new Insets(50));
+        Admin.setPadding(new Insets(10));
+        Film.setPadding(new Insets(10));
 
         Film.setOnAction(event -> this.MovieBildschirm.show());
 
-        DontPushMe.add(Admin, 0, 0);
-        DontPushMe.add(Film, 3, 0);
+        DontPushMe.add(Admin, 4, 0);
+        DontPushMe.add(Film, 5, 0);
 
         return DontPushMe;
     }
